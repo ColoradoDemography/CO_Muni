@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>CO Boundaries</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+
+    <style>
+        .well{
+		position: absolute;
+		z-index: 5;
+		top: 63px;
+		left: 10px;
+		    padding: 12px !important;
+		}
+		
+		#baselayer{
+		position: absolute;
+		z-index: 5;
+		top: 129px;
+		left: 10px;
+		
+	background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+
+		}
+		
+		#lalign {
+    display: block;
+    padding: 12px;
+    text-indent: 0px;
+}
+
+#ialign {
+    width: 13px;
+    height: 13px;
+    padding: 0px;
+    margin:0px;
+    vertical-align: bottom;
+    position: relative;
+    top: -3px;
+    *overflow: hidden;
+}
+		
+    </style>
+  
+
+    <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css">
+	
+	
+    <link rel="stylesheet" href="assets/css/app.css">
+	
+    <link rel="stylesheet" href="assets/css/slider.css">	
+
+
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon-152.png">
+    <link rel="icon" sizes="196x196" href="assets/img/favicon-196.png">
+    <link rel="shortcut icon" sizes="196x196" href="assets/img/favicon-196.png">
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Boundaries & Annexations</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div id="the-basics"  class="form-group has-feedback navbar-right">
+              <input id="searchbox" type="text" placeholder="Search" class="form-control typeahead">
+              <span id="searchicon" class="fa fa-search form-control-feedback"></span>
+          </div>
+        </form>
+        <ul class="nav navbar-nav">
+          <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;"><i class="fa fa-question-circle" style="color: white"></i>&nbsp;&nbsp;About</a></li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download" style="color: white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://dola.colorado.gov/cms-base/sites/dola.colorado.gov.gis-cms/files/projects/muniproj/assets/download/MuniBounds.zip" download="MuniBounds" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Current Boundaries</a></li>
+                <li><a href="http://dola.colorado.gov/cms-base/sites/dola.colorado.gov.gis-cms/files/projects/muniproj/assets/download/Web_Annexations.zip" download="Web_Annexations" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Base and Annexations</a></li>
+                <li><a href="http://dola.colorado.gov/cms-base/sites/dola.colorado.gov.gis-cms/files/projects/muniproj/assets/download/DeAnnexations.zip" download="DeAnnexations" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;De-Annexations</a></li>
+              </ul>
+          </li>
+
+        </ul>
+      </div><!--/.navbar-collapse -->
+    </div>
+
+    <div id="map"></div>
+
+    <div id="loading">
+      <div class="loading-indicator">
+        <div class="progress progress-striped active">
+          <div class="progress-bar progress-bar-info" style="width: 100%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Colorado Municipal Boundaries Project</h4>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs" id="aboutTabs">
+              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
+              <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
+            </ul>
+            <div class="tab-content" id="aboutTabsContent" style="padding-top: 10px;">
+              <div class="tab-pane fade active in" id="about">
+                <p>The Colorado Municipal Boundaries Project is a collaborative effort between private, local, county, and state sources.  Please contact <a href="mailto:daniel.trone@state.co.us">
+Daniel Trone</a> for questions, or to contribute to this project.</p>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">Information</div>
+                  <ul class="list-group">
+                    <li class="list-group-item"><p><b>Data:</b>&nbsp;&nbsp;The Municipalities dataset was created by combining a Base Boundary dataset with an Annexation dataset.</p><p>The Base Boundaries are a compilation of <a target="_blank" href="https://docs.google.com/spreadsheets/d/1284Y_nsf1sZW6WN6ZSSz0LPZMs3R61XXJt8iTZvIydo/edit?usp=sharing">voluntary contributions and publicly available downloads</a> from local and regional authorities.</p><p>The Annexation dataset was created by transcribing areas from annexation maps; either by freehand drawing or by digitally copying when available.</p><p>This dataset was last updated on 1/28/2015 - however, this does not imply that this map or its associated data is current as of that date.  Currency of data depends upon having accurate base data as well as timely annexation updates (sent from each County Clerk to <a target="_blank" href="http://www.colorado.gov/cs/Satellite/DOLA-Main/CBON/1251589672852">DOLA</a> per Colorado statutory requirements).</p></li>
+
+                    <li class="list-group-item"><b>Application:</b>&nbsp;&nbsp;<a target="_blank" href="http://bryanmcbride.com/bootleaf">Bootleaf</a> Template created by Bryan McBride, released under the <a target="_blank" href="http://en.wikipedia.org/wiki/MIT_License">MIT license</a>.  Feature services provided by <a target="_blank"  href="http://www.esri.com/software/arcgis/arcgisonline">ArcGIS Online</a> through <a target="_blank"  href="http://esri.github.io/esri-leaflet/">ESRI-Leaflet</a>, under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, version 2.0</a>.  Contribute to this project on <a href="http://github.com/GeoDemogCO/MuniProject" target="_blank">Github</a>.</li>
+                  </ul>
+                </div>
+              </div>
+              <div id="disclaimer" class="tab-pane fade text-danger">
+                <p>The creator (<a target="_blank" href="http://www.colorado.gov/cs/Satellite/DOLA-Main/CBON/1251589672852">DOLA</a>) and contributors to this project do not guarantee the accuracy of any information presented, are not liable for any errors or omissions and are not responsible for determining fitness for use, either in this map or in its associated data.  This data should not be considered an authoritative source of information.</p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Map Legend</h4>
+          </div>
+          <div class="modal-body">
+            <p>Map Legend goes here...</p>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title text-primary" id="feature-title"></h4>
+          </div>
+          <div class="modal-body" id="feature-info"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">
+              Bootleaf Template Developed by <a href='http://bryanmcbride.com'>Bryan McBride</a>
+            </h4>
+          </div>
+          <div class="modal-body">
+            <div id="attribution"></div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+	<form>
+	<div id="baselayer" class="checkbox">
+  <label id="lalign"><input id="ialign" type="checkbox" />&nbsp;&nbsp;Only Show Annexations</label>
+</div>
+</form>
+          <div class="well">
+            <p style="margin-top: -5px; margin-bottom: -12px; align: top;">Annexation Filter</p><br /><b>2010&nbsp;&nbsp;&nbsp;</b> <input type="text" class="slider" value="" data-slider-min="2010" data-slider-max="2016" data-slider-step=".0833333333333333333333333333333333333333333333333" data-slider-value="[2010,2016]" id="sl1" > <b>&nbsp;&nbsp;&nbsp;2016</b>
+          </div>
+		  
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/typeahead.jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+    <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		  <!-- Load Esri Leaflet from CDN -->
+  <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+
+    <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+    <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
+    <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
+    <script src="assets/leaflet-activearea/L.activearea.js"></script>
+
+    <script src="assets/js/bootstrap-slider.js"></script>	
+    <script src="assets/js/modernizr.js"></script>		
+    <script src="assets/js/locations.js"></script>	
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
