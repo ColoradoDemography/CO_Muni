@@ -1,7 +1,7 @@
 Colorado Municipal Boundaries Project
 ========
 
-![Desktop](https://raw.githubusercontent.com/GeoDemogCO/MuniProject/master/assets/img/app.png)
+<img src="assets/img/app.png" /><br /><br />
 
 ### Project Homepage:
 http://dola.colorado.gov/maps/muni
