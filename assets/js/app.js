@@ -78,7 +78,7 @@ var counties = L.esri.featureLayer('http://services.arcgis.com/IamIM3RJ5xHykalK/
   }).addTo(map);; 
   
   
-var annexations = L.esri.featureLayer('http://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Web_Annexations03252015/FeatureServer/0', {
+var annexations = L.esri.featureLayer('http://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Web_Annexations06052015/FeatureServer/0', {
     simplifyFactor: featsimplify,
     style: function (feature) {
 		return getcitystyle(feature);
