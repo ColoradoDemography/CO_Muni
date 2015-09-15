@@ -138,3 +138,41 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
+
+        .well{
+		position: absolute;
+		z-index: 5;
+		top: 63px;
+		left: 10px;
+		    padding: 12px !important;
+		}
+		
+		#baselayer{
+		position: absolute;
+		z-index: 5;
+		top: 129px;
+		left: 10px;
+		
+	background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+
+		}
+		
+		#lalign {
+    display: block;
+    padding: 12px;
+    text-indent: 0px;
+}
+
+#ialign {
+    width: 13px;
+    height: 13px;
+    padding: 0px;
+    margin:0px;
+    vertical-align: bottom;
+    position: relative;
+    top: -3px;
+    *overflow: hidden;
+}

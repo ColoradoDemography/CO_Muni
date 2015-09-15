@@ -10,68 +10,37 @@
     <meta name="author" content="">
     <title>CO Boundaries</title>
 
+    <!-- uses Bootleaf Template   https://github.com/bmcbride/bootleaf  -->
+    
+    <!-- load bootstrap css -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    
+    <!-- load leaflet css -->
     <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
 
-    <style>
-        .well{
-		position: absolute;
-		z-index: 5;
-		top: 63px;
-		left: 10px;
-		    padding: 12px !important;
-		}
-		
-		#baselayer{
-		position: absolute;
-		z-index: 5;
-		top: 129px;
-		left: 10px;
-		
-	background-color: #f5f5f5;
-    border: 1px solid #e3e3e3;
-    border-radius: 4px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
-
-		}
-		
-		#lalign {
-    display: block;
-    padding: 12px;
-    text-indent: 0px;
-}
-
-#ialign {
-    width: 13px;
-    height: 13px;
-    padding: 0px;
-    margin:0px;
-    vertical-align: bottom;
-    position: relative;
-    top: -3px;
-    *overflow: hidden;
-}
-		
-    </style>
-  
-
+    <!-- load leaflet locate control plugin css -->
     <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css">
 	
-	
+	  <!-- load my css -->
     <link rel="stylesheet" href="assets/css/app.css">
-	
-    <link rel="stylesheet" href="assets/css/slider.css">	
+    
+    <!-- load slider for bootstrap plugin css -->
+	  <link rel="stylesheet" href="assets/css/slider.css">	
 
-
+    <!-- favicons , i have left them as default from template -->
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon-120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon-152.png">
     <link rel="icon" sizes="196x196" href="assets/img/favicon-196.png">
     <link rel="shortcut icon" sizes="196x196" href="assets/img/favicon-196.png">
+    
   </head>
 
   <body>
+    
+    <!-- top navbar -->
+    <!-- icon class refers to font-awesome icons   https://fortawesome.github.io/Font-Awesome/  -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -101,10 +70,13 @@
 
         </ul>
       </div><!--/.navbar-collapse -->
-    </div>
+    </div><!-- end top navbar -->
 
+    
+    <!-- leaflet map container -->
     <div id="map"></div>
 
+    <!-- loading animation -->
     <div id="loading">
       <div class="loading-indicator">
         <div class="progress progress-striped active">
@@ -113,6 +85,7 @@
       </div>
     </div>
 
+    <!-- about modal.  linked to from top navbar -->
     <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -145,37 +118,10 @@ Daniel Trone</a> for questions, or to contribute to this project.</p>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div><!-- end about modal -->
 
-    <div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Map Legend</h4>
-          </div>
-          <div class="modal-body">
-            <p>Map Legend goes here...</p>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title text-primary" id="feature-title"></h4>
-          </div>
-          <div class="modal-body" id="feature-info"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
+    
+   <!-- attribution modal -->
     <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -186,38 +132,44 @@ Daniel Trone</a> for questions, or to contribute to this project.</p>
             </h4>
           </div>
           <div class="modal-body">
-            <div id="attribution"></div>
+            <div id="attribution">Tiles courtesy of ESRI.</div> <!-- Default to ESRI topo map -->
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div><!-- end attribution modal -->
 
-	<form>
+<!-- standalone checkbox control -->
 	<div id="baselayer" class="checkbox">
   <label id="lalign"><input id="ialign" type="checkbox" />&nbsp;&nbsp;Only Show Annexations</label>
 </div>
-</form>
+
+    <!-- range control with bootstrap slider container -->
           <div class="well">
             <p style="margin-top: -5px; margin-bottom: -12px; align: top;">Annexation Filter</p><br /><b>2010&nbsp;&nbsp;&nbsp;</b> <input type="text" class="slider" value="" data-slider-min="2010" data-slider-max="2016" data-slider-step=".0833333333333333333333333333333333333333333333333" data-slider-value="[2010,2016]" id="sl1" > <b>&nbsp;&nbsp;&nbsp;2016</b>
           </div>
 		  
+    <!-- load javascript -->
+    
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="assets/js/typeahead.jquery.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
     <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    
 		  <!-- Load Esri Leaflet from CDN -->
   <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
 
+    <!-- leaflet plugins remote-->
     <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
+    <!-- leaflet plugins local-->
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/leaflet-activearea/L.activearea.js"></script>
-
     <script src="assets/js/bootstrap-slider.js"></script>	
-    <script src="assets/js/modernizr.js"></script>		
+    
+    <!-- place location data, x, y -->
     <script src="assets/js/locations.js"></script>	
+    
+    <!-- main javascript code -->
     <script src="assets/js/app.js"></script>
   </body>
 </html>
