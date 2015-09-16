@@ -1272,7 +1272,13 @@ if(dtime === null){
 			opacity: 1,
 			color: 'yellow'
 		});
-	layer.bringToFront();	 //and bring that feature to the front (so other boundaries dont obscure the new highlighted boundaries)
+      
+      
+                  //and bring that feature to the front (so other boundaries dont obscure the new highlighted boundaries)
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+      
 	  }
 }else{ //if feature is an annexation
 
@@ -1292,7 +1298,13 @@ if(dtime === null){
 			opacity: 1,
 			color: 'yellow'
 		});
-	layer.bringToFront();	//and bring that feature to the front (so other boundaries dont obscure the new highlighted boundaries)
+      
+                  //and bring that feature to the front (so other boundaries dont obscure the new highlighted boundaries)
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+      
+
 	  }
 	  
 }
@@ -1314,7 +1326,9 @@ function highlightFeatureDe(e) {
         opacity: 1,
         color: 'pink'
     });
-layer.bringToFront();
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
 }
 
 
