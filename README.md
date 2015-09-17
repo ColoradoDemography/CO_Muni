@@ -16,6 +16,6 @@ The Base Boundaries are a compilation of voluntary contributions and publicly av
 
 The Annexation dataset was created by transcribing areas from annexation maps; either by freehand drawing or by digitally copying when available.
 
-This dataset was last updated on 1/28/2015 - however, this does not imply that this map or its associated data is current as of that date. Currency of data depends upon having accurate base data as well as timely annexation updates (sent from each County Clerk to DOLA per Colorado statutory requirements).
+This dataset was last updated on 9/17/2015 - however, this does not imply that this map or its associated data is current as of that date. Currency of data depends upon having accurate base data as well as timely annexation updates (sent from each County Clerk to DOLA per Colorado statutory requirements).
 
 Application:  Bootleaf Template created by Bryan McBride, released under the MIT license. Feature services provided by ArcGIS Online through ESRI-Leaflet.
