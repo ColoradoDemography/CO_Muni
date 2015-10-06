@@ -808,13 +808,7 @@ if(rawdate === null){
  "<h4>" + citylookup(geojson.properties["CITY"]) +
  "</h4><b>Base Layer</b></div>";
 }else{
-	  if((curyear+curmonth)<=minyear){
-	  skip=1;
-	  } //dont show all before this date - dont display popup for annexation not within date range
-	  
-	  if((curyear+curmonth)>=maxyear){
-	  skip=1;
-	  } //dont show all after this date - dont display popup for annexation not within date range
+// 	  always show annexation popup - even if annexation not within date range
 
   //populate popup with annexation attributes
  if (geojson.properties) {
