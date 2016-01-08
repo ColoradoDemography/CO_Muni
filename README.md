@@ -4,7 +4,7 @@ Colorado Municipal Boundaries Project
 <img src="assets/img/app.png" /><br /><br />
 
 ### Project Homepage:
-http://dola.colorado.gov/maps/muni
+https://dola.colorado.gov/maps/muni
 
 
 The Colorado Municipal Boundaries Project is a collaborative effort between private, local, county, and state sources. Please contact [mailto:daniel.trone@state.co.us Daniel Trone] for questions, or to contribute to this project.
