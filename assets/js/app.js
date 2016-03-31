@@ -79,7 +79,7 @@ var counties = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK
 //boundary and annexations layer from my arcgis online account  
 //style handled through 'getcitystyle' function
 //popup handled through 'createPopup' function
-var annexations = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Web_Annexations09172015/FeatureServer/0', {
+var annexations = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Web_Annexations02232016/FeatureServer/0', {
     simplifyFactor: featsimplify,
     style: function (feature) {
 		return getcitystyle(feature);
@@ -137,7 +137,7 @@ $(':checkbox').change(function() {
   //deannexation feature layer from arcgis online
   //custom popup function createPopup2
   //all features same style
-var deannex = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/DeAnnexations11102014/FeatureServer/0', {
+var deannex = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/DeAnnexations02232016/FeatureServer/0', {
     simplifyFactor: 0,
     style: function (feature) {
         return {
