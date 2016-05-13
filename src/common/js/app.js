@@ -67,24 +67,34 @@ map = L.map("map", {
   attributionControl: false
 });
 
-
-//county outline layer from my arcgis online account
-var counties = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/County_Line_2012/FeatureServer/0', {
-    simplifyFactor: 0.5,
+var counties = L.esri.featureLayer({
+    url: 'https://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Heritage_Trees_Portland/FeatureServer/0',
+      simplifyFactor: 0.5,
     style: function (feature) {
         return {color: 'black', weight: countyweight };
     }
   }).addTo(map);
+
+
+//county outline layer from my arcgis online account
+// var counties = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/County_Line_2012/FeatureServer/0', {
+//     simplifyFactor: 0.5,
+//     style: function (feature) {
+//         return {color: 'black', weight: countyweight };
+//     }
+//   }).addTo(map);
   
 //boundary and annexations layer from my arcgis online account  
 //style handled through 'getcitystyle' function
 //popup handled through 'createPopup' function
-var annexations = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Web_Annexations05132016/FeatureServer/0', {
+var annexations = L.esri.featureLayer({
+  url: 'https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Web_Annexations05132016/FeatureServer/0', 
     simplifyFactor: featsimplify,
     style: function (feature) {
 		return getcitystyle(feature);
     },
 	onEachFeature: createPopup
+    
   }).addTo(map);
   
 
@@ -137,7 +147,8 @@ $(':checkbox').change(function() {
   //deannexation feature layer from arcgis online
   //custom popup function createPopup2
   //all features same style
-var deannex = L.esri.featureLayer('https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/DeAnnexations02232016/FeatureServer/0', {
+var deannex = L.esri.featureLayer({
+  url: 'https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/DeAnnexations02232016/FeatureServer/0', 
     simplifyFactor: 0,
     style: function (feature) {
         return {
@@ -1433,9 +1444,9 @@ var baseLayers = {
 //overlay layers for grouped layer control plugin
 var groupedOverlays = {
   "Layers": {
-	"<img src='assets/img/muni.png' width='24' height='28'>&nbsp;Boundaries & Annexations": annexations,
-	"<img src='assets/img/deannex.png' width='24' height='28'>&nbsp;De-Annexations": deannex,	
-	"<img src='assets/img/county.png' width='24' height='28'>&nbsp;County Lines": counties
+	"<img src='images/muni.png' width='24' height='28'>&nbsp;Boundaries & Annexations": annexations,
+	"<img src='images/deannex.png' width='24' height='28'>&nbsp;De-Annexations": deannex,	
+	"<img src='images/county.png' width='24' height='28'>&nbsp;County Lines": counties
   }
 };
 

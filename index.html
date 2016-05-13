@@ -11,29 +11,20 @@
     <title>CO Boundaries</title>
 
     <!-- uses Bootleaf Template   https://github.com/bmcbride/bootleaf  -->
-    
-    <!-- load bootstrap css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-    
-    <!-- load leaflet css -->
-    <link rel="stylesheet" href="assets/css/leaflet.css">
-
-    <!-- load leaflet locate control plugin css -->
+    <link rel="stylesheet" href="src/lib/css/leaflet.css">
+    <link rel="stylesheet" href="src/lib/css/MarkerCluster.css">    
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css">
-	
-	  <!-- load my css -->
-    <link rel="stylesheet" href="assets/css/app.css">
-    
-    <!-- load slider for bootstrap plugin css -->
-	  <link rel="stylesheet" href="assets/css/slider.css">	
+    <link rel="stylesheet" href="src/common/css/app.css">
+	  <link rel="stylesheet" href="src/lib/css/slider.css">	
 
     <!-- favicons , i have left them as default from template -->
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon-120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon-152.png">
-    <link rel="icon" sizes="196x196" href="assets/img/favicon-196.png">
-    <link rel="shortcut icon" sizes="196x196" href="assets/img/favicon-196.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon-152.png">
+    <link rel="icon" sizes="196x196" href="images/favicon-196.png">
+    <link rel="shortcut icon" sizes="196x196" href="images/favicon-196.png">
     
   </head>
 
@@ -149,27 +140,23 @@ Daniel Trone</a> for questions, or to contribute to this project.</p>
           </div>
 		  
     <!-- load javascript -->
-    
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/typeahead.jquery.js"></script>
-    <script src="assets/js/leaflet.js"></script>
+    <script src="src/lib/js/typeahead.jquery.js"></script>
+    <script src="src/lib/js/leaflet.js"></script>
     
 		  <!-- Load Esri Leaflet from CDN -->
-  <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
 
     <!-- leaflet plugins remote-->
-    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+    <script src="src/lib/js/MarkerCluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
-    <!-- leaflet plugins local-->
-    <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
-    <script src="assets/leaflet-activearea/L.activearea.js"></script>
-    <script src="assets/js/bootstrap-slider.js"></script>	
+    <script src="src/lib/js/leaflet.groupedlayercontrol.js"></script>
+    <script src="src/lib/js/L.activearea.js"></script>
+    <script src="src/lib/js/bootstrap-slider.js"></script>
     
     <!-- place location data, x, y -->
-    <script src="assets/js/locations.js"></script>	
-    
-    <!-- main javascript code -->
-    <script src="assets/js/app.js"></script>
+    <script src="src/common/js/locations.js"></script>	
+    <script src="src/common/js/app.js"></script>
   </body>
 </html>

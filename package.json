@@ -1,0 +1,24 @@
+{
+  "name": "co_muni",
+  "version": "0.0.1",
+  "description": "Colorado Municipal Boundaries Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royhobbstn/CO_Muni.git"
+  },
+  "keywords": [
+    "colorado",
+    "boundary",
+    "annexation"
+  ],
+  "author": "Daniel Trone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/royhobbstn/CO_Muni/issues"
+  },
+  "homepage": "https://github.com/royhobbstn/CO_Muni#readme"
+}
