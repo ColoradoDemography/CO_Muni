@@ -1434,11 +1434,11 @@ if (document.body.clientWidth <= 767) {
 
 //list of baselayers for grouped layer control plugin
 var baseLayers = {
-  "Mapquest Imagery": mapquestOAM,
-  "Mapquest Hybrid": mapquestHYB,
+  //"Mapquest Imagery": mapquestOAM,
+  //"Mapquest Hybrid": mapquestHYB,
   "ESRI Topographic": esritopo,
   "OpenStreetMap Simple": mbmap1,
-  "OpenStreetMap Terrain": mbmap2, 
+  "OpenStreetMap Terrain": mbmap2
 };
 
 //overlay layers for grouped layer control plugin
