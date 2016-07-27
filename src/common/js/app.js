@@ -88,7 +88,7 @@ var counties = L.esri.featureLayer({
 //style handled through 'getcitystyle' function
 //popup handled through 'createPopup' function
 var annexations = L.esri.featureLayer({
-  url: 'https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Web_Annexations05132016/FeatureServer/0', 
+  url: 'http://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Web_Annexations07272016/FeatureServer/0', 
     simplifyFactor: featsimplify,
     style: function (feature) {
 		return getcitystyle(feature);
