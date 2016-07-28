@@ -70,9 +70,12 @@ map = L.map("map", {
 var counties = L.esri.featureLayer({
     url: 'https://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Webmap_County/FeatureServer/0',
       simplifyFactor: 0.5,
-    style: function (feature) {
-        return {color: 'black', weight: countyweight };
-    }
+    style: function(){ return { 
+        weight: 2,
+        opacity: 1,
+        color: 'black',
+        fillOpacity: 0
+		};}
   }).addTo(map);
 
 
