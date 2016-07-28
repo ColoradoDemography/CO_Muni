@@ -68,7 +68,7 @@ map = L.map("map", {
 });
 
 var counties = L.esri.featureLayer({
-    url: 'https://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Heritage_Trees_Portland/FeatureServer/0',
+    url: 'http://services.arcgis.com/IamIM3RJ5xHykalK/arcgis/rest/services/Webmap_County/FeatureServer/0',
       simplifyFactor: 0.5,
     style: function (feature) {
         return {color: 'black', weight: countyweight };
