@@ -13,7 +13,7 @@
     <!-- uses Bootleaf Template   https://github.com/bmcbride/bootleaf  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="src/lib/css/leaflet.css">
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
     <link rel="stylesheet" href="src/lib/css/MarkerCluster.css">    
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css">
     <link rel="stylesheet" href="src/common/css/app.css">
@@ -153,10 +153,7 @@ Daniel Trone</a> for questions, or to contribute to this project.</p>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="src/lib/js/typeahead.jquery.js"></script>
-    <script src="src/lib/js/leaflet.js"></script>
-    
-		  <!-- Load Esri Leaflet from CDN -->
-  <script src="https://cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
+    <script src="https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js"></script>
 
     <!-- leaflet plugins remote-->
     <script src="src/lib/js/MarkerCluster.js"></script>
@@ -165,8 +162,12 @@ Daniel Trone</a> for questions, or to contribute to this project.</p>
     <script src="src/lib/js/L.activearea.js"></script>
     <script src="src/lib/js/bootstrap-slider.js"></script>
     
+    
+    <script src="src/lib/js/leafletajax.js"></script>
+    
     <!-- place location data, x, y -->
     <script src="src/common/js/locations.js"></script>	
+    <script src="src/common/js/lookups.js"></script>	
     <script src="src/common/js/app.js"></script>
   </body>
 </html>
