@@ -118,7 +118,7 @@ geojsonLayer.setStyle(getcitystyle);
         //we calculate a bounding box equal much larger than the actual visible map.  This preloades shapes that are off the map.  Combined with the center point query, this will allow us to not have to requery the database on every map movement.
         var newbounds = (coord.swlng - diff2) + "," + (coord.swlat - diff1) + "," + (coord.nelng + diff2) + "," + (coord.nelat + diff1);
 
-        geojsonLayer.refresh("https://gis.dola.colorado.gov:4010/muniapi/munis?bb=" + newbounds + "&zoom=" + map.getZoom() ); //add a new layer replacing whatever is there
+        geojsonLayer.refresh("https://gis.dola.colorado.gov/munis/munis?bb=" + newbounds + "&zoom=" + map.getZoom() ); //add a new layer replacing whatever is there
 
     }
 
