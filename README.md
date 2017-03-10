@@ -7,7 +7,7 @@ Colorado Municipal Boundaries Project
 https://demography.dola.colorado.gov/CO_Muni/
 
 
-The Colorado Municipal Boundaries Project is a collaborative effort between private, local, county, and state sources. Please contact [Robert Kemp](mailto:Robert.Kemp@state.co.us) for questions, or to contribute to this project.
+The Colorado Municipal Boundaries Project is a collaborative effort between private, local, county, and state sources. Please contact [Todd Bleess](mailto:Todd.Bleess@state.co.us) for questions, or to contribute to this project.
 
 ### Information:
 Data:  The Municipalities dataset was created by combining a Base Boundary dataset with an Annexation dataset.
