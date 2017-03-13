@@ -151,7 +151,6 @@ var curdate=new Date(rawdate); //turns clerk and recorder date into a javascrip 
 var curyear=curdate.getUTCFullYear(); //get year only from date object
 var curmonth=(curdate.getUTCMonth() + 1)/12; //turns decimal value into actual month
 
-  
   //if no date given, then it is a part of the base layer (rather than an annexation)
 if(rawdate === "null"){
 	if($('#ialign').prop('checked')===true){
@@ -164,7 +163,7 @@ if(rawdate === "null"){
 	  return {fillColor: 'rgb(0,0,0)', weight: 1, opacity: 0.6, color: 'rgb(0,0,0)', fillOpacity: 0.04};
 	  } 
 	  
-	  if((curyear+curmonth)>=maxyear){ //dont show all after this date
+	  if((curyear+curmonth)>maxyear){ //dont show all after this date
 	  return {fillColor: 'rgb(0,0,0)', weight: 1, opacity: 0.6, color: 'rgb(0,0,0)', fillOpacity: 0.04};
 	  } 
 }
