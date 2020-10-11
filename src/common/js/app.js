@@ -15,10 +15,10 @@ var mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
 
 
     /* Basemap Layers */
-    var mbstyle = L.mapbox.tileLayer('statecodemog.d47df6dd', {
-        'zIndex': 1
-    });
-    var mbsat = L.mapbox.tileLayer('statecodemog.km7i3g01');
+    //var mbstyle = L.mapbox.tileLayer('statecodemog.d47df6dd', {
+        //'zIndex': 1
+    //});
+    //var mbsat = L.mapbox.tileLayer('statecodemog.km7i3g01');
 
 
 //Mapbox basemaps (my own)
@@ -30,7 +30,7 @@ var mbmap2   = L.tileLayer(mbUrl, {id: 'statecodemog.map-392qgzze', attribution:
 map = L.map("map", {
   zoom: 12,
   center: [39.8, -105],
-  layers: [mbstyle],
+  layers: [mbmap1],
   zoomControl: false,
   attributionControl: false
 });
@@ -1072,9 +1072,9 @@ if (document.body.clientWidth <= 767) {
 //list of baselayers for grouped layer control plugin
 var baseLayers = {
   "OpenStreetMap Simple": mbmap1,
-  "OpenStreetMap Terrain": mbmap2,
-  "Mapbox Contrast": mbstyle,
-  "Mapbox Satellite": mbsat
+  "OpenStreetMap Terrain": mbmap2
+  //"Mapbox Contrast": mbstyle,
+  //"Mapbox Satellite": mbsat
 };
 
 //overlay layers for grouped layer control plugin
