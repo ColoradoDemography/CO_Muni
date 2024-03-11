@@ -275,6 +275,8 @@ if(city=='22200'){cname='Eagle';}
 if(city=='33695'){cname='Gypsum';}
 if(city=='59830'){cname='Pitkin';}
 if(city=='56365'){cname='Otis';}
+if(city=='66636'){cname='Carbonate';}
+if(city=='67925'){cname='Keystone';}
 
 return cname;
 }
