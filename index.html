@@ -84,8 +84,8 @@
     </div><!-- end top navbar -->
 
     
-    <!-- leaflet map container -->
-    <div id="map"></div>
+   
+    
 
     <!-- loading animation -->
     <div id="loading">
@@ -150,16 +150,21 @@ please email the <a href="mailto:todd.bleess@state.co.us">State Demography Offic
       </div><!-- /.modal-dialog -->
     </div><!-- end attribution modal -->
 
-<!-- standalone checkbox control -->
-	<div id="baselayer" class="checkbox">
-  <label id="lalign"><input id="ialign" type="checkbox" />&nbsp;&nbsp;Only Show Annexations</label>
-</div>
+
 
     <!-- range control with bootstrap slider container -->
           <div class="well">
             <p style="margin-top: -5px; margin-bottom: -12px; align: top;">Annexation Filter</p><br /><b>2010&nbsp;&nbsp;&nbsp;</b> <input type="text" class="slider" value="" data-slider-min="2010" data-slider-max="2024" data-slider-step=".0833333333333333333333333333333333333333333333333" data-slider-value="[2010,2024]" id="sl1" > <b>&nbsp;&nbsp;&nbsp;2024</b>
           </div>
-		  
+ 
+	  <!-- standalone checkbox control -->
+	<div id="baselayer" class="checkbox">
+  <label id="lalign"><input id="ialign" type="checkbox" />&nbsp;&nbsp;Only Show Annexations</label>
+</div>
+	  
+	  <!-- leaflet map container -->
+<div id="map"></div>
+	  
     <!-- load javascript -->
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
