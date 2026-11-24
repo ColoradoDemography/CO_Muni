@@ -45,7 +45,7 @@ var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/re
 //map declaration, default with the esri topo map.  No zoom control.  No attribution control (handling that custom)
 map = L.map("map", {
   zoom: 12,
-  center: [39.8, -105],
+  center: [39.6, -105],
   layers: [Esri_WorldStreetMap],
   zoomControl: false,
   attributionControl: false
